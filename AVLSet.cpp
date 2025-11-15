@@ -126,6 +126,38 @@ AVLSet::Node *AVLSet::RotateRight(Node *y) {
     return x;
 }
 
+void AVLSet::ReBalance(Node* start) {
+    Node* cur = start;
+
+    while (cur) {
+        // 현재 노드의 height, size 재측정
+        ResizeHs(cur);
+
+        int balance = BalanceDegree(cur);
+
+        // 왼쪽으로 기움 : LL or LR
+        if (balance == 2) {
+            // LR: 왼쪽 자식을 먼저 좌회전
+            if (BalanceDegree(cur->left) < 0)
+                RotateLeft(cur->left);
+
+            RotateRight(cur);
+        }
+
+        // 오른쪽으로 기움 : RR or RL
+        else if (balance == -2) {
+            // RL: 오른쪽 자식을 먼저 우회전
+            if (BalanceDegree(cur->right) > 0)
+                RotateRight(cur->right);
+
+            RotateLeft(cur);
+        }
+
+        // 부모로 올라가서 체크
+        cur = cur->parent;
+    }
+}
+
 AVLSet::Node *AVLSet::FindNode(int x) {
     Node *cur_Node = root;
     while (cur_Node != nullptr) {
