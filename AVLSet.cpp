@@ -173,6 +173,39 @@ AVLSet::Node *AVLSet::FindNode(int x) {
     return nullptr;
 }
 
+void AVLSet::Find(int x) {
+    Node *cur_Node = root;
+    int depth = 0;
+
+    while (cur_Node != nullptr) {
+        if (cur_Node->key == x) {
+            cout << depth * cur_Node->height << '\n';
+            return;
+        }
+
+        if (cur_Node->key > x) { // move to left_child
+            cur_Node = cur_Node->left;
+        } else { // move to right_child
+            cur_Node = cur_Node->right;
+        }
+        depth++;
+    }
+    
+    cout << -1 << '\n'; // 찾지 못함
+}
+
+void AVLSet::Empty() {
+    if (n_ == 0) {
+        cout << 1 << '\n';
+    } else {
+        cout << 0 << '\n';
+    }
+}
+
+void AVLSet::Size() {
+    cout << n_ << '\n';
+}
+
 void AVLSet::UpperBound(int x) {
     Node *cur = root;
     Node *result_node = nullptr;
