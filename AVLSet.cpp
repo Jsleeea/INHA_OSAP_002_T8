@@ -279,16 +279,51 @@ void AVLSet::Prev(int x) {
         y_node = p_node;
     }
 
+    // y_node가 없는 경우
     if (y_node == nullptr) {
         cout << -1 << '\n';
         return;
     }
 
+    // key값과 깊이 * 높이를 공백으로 구분하여 출력
     int depth = 0;
     for (Node* t = y_node; t && t->parent; t->parent) {
         depth++;
     }
     cout << y_node->key << ' ' << depth * y_node->height << '\n';
+
+void AVLSet::Next(int x) {
+    Node* x_node = FindNode(x);
+    Node* y_node = nullptr;
+
+    if (x_node->right) { // 오른쪽 자식이 있는 경우
+        while (y_node->left) {
+            y_node = y_node->left;
+        }
+    }
+    else { // 오른쪽 자식이 없는 경우
+        Node* cur_node = x_node;
+        Node* p_node = cur->parent;
+        while (p && p->right == cur) {
+            cur_node = p_node;
+            p_node = p_node->parent;
+        }
+        y_node = p;
+    }
+    // y_node가 없는 경우
+    if (y_node == nullptr) {
+        cout << -1 << '\n';
+        return;
+    }
+
+    // key값과 깊이 * 높이를 공백으로 나눠서 출력
+    int depth = 0;
+    for (Node* t = y_node; t && t->parent; t = t->parnt) {
+        depth++;
+    }
+
+    cout << y_node->key << ' ' << depth * y_node->height << '\n';
+}
 
 
 void AVLSet::UpperBound(int x) {
