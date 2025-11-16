@@ -1,8 +1,3 @@
-// MIT License
-// Copyright (c) 2025 blackcow9622
-// Licensed under the MIT License. See LICENSE file in the project root for details.
-// 작성자 : 조현우, 작성일 : 2025.11.16
-
 #include <iostream>
 using namespace std;
 
@@ -47,7 +42,7 @@ struct AVLSet::Node {
     Node* left, * right, * parent;
 };
 
-int AVLSet::BalanceDegree(Node* x) {
+int AVLSet::BalanceDegree(Node *x) {
     if (!x) {
         return 0;
     }
@@ -56,7 +51,7 @@ int AVLSet::BalanceDegree(Node* x) {
     return lh - rh;
 }
 
-void AVLSet::ResizeHs(Node* x) {
+void AVLSet::ResizeHs(Node *x) {
     if (!x) {
         return;
     }
@@ -69,12 +64,12 @@ void AVLSet::ResizeHs(Node* x) {
     x->size = 1 + ls + rs;
 }
 
-AVLSet::Node* AVLSet::RotateLeft(Node* x) {
+AVLSet::Node *AVLSet::RotateLeft(Node *x) {
     if (!x || !x->right) {
         return x;
     }
-    Node* y = x->right;
-    Node* B = y->left;
+    Node *y = x->right;
+    Node *B = y->left;
 
     // x, y, B 재배치
     y->left = x;
@@ -92,8 +87,7 @@ AVLSet::Node* AVLSet::RotateLeft(Node* x) {
         root = y;
     else if (y->parent->left == x) {
         y->parent->left = y;
-    }
-    else {
+    } else {
         y->parent->right = y;
     }
 
@@ -103,12 +97,12 @@ AVLSet::Node* AVLSet::RotateLeft(Node* x) {
     return y;
 }
 
-AVLSet::Node* AVLSet::RotateRight(Node* y) {
+AVLSet::Node *AVLSet::RotateRight(Node *y) {
     if (!y || !y->left) {
         return y;
     }
-    Node* x = y->left;
-    Node* B = x->right;
+    Node *x = y->left;
+    Node *B = x->right;
 
     x->right = y;
     y->left = B;
@@ -122,8 +116,7 @@ AVLSet::Node* AVLSet::RotateRight(Node* y) {
         root = x;
     else if (x->parent->left == y) {
         x->parent->left = x;
-    }
-    else {
+    } else {
         x->parent->right = x;
     }
 
@@ -165,16 +158,15 @@ void AVLSet::ReBalance(Node* start) {
     }
 }
 
-AVLSet::Node* AVLSet::FindNode(int x) {
-    Node* cur_Node = root;
+AVLSet::Node *AVLSet::FindNode(int x) {
+    Node *cur_Node = root;
     while (cur_Node != nullptr) {
         if (cur_Node->key == x) {
             return cur_Node;
         }
         if (cur_Node->key > x) { // move to left_child
             cur_Node = cur_Node->left;
-        }
-        else { // move to right_child
+        } else { // move to right_child
             cur_Node = cur_Node->right;
         }
     }
@@ -182,7 +174,7 @@ AVLSet::Node* AVLSet::FindNode(int x) {
 }
 
 void AVLSet::Find(int x) {
-    Node* cur_Node = root;
+    Node *cur_Node = root;
     int depth = 0;
 
     while (cur_Node != nullptr) {
@@ -193,21 +185,19 @@ void AVLSet::Find(int x) {
 
         if (cur_Node->key > x) { // move to left_child
             cur_Node = cur_Node->left;
-        }
-        else { // move to right_child
+        } else { // move to right_child
             cur_Node = cur_Node->right;
         }
         depth++;
     }
-
+    
     cout << -1 << '\n'; // 찾지 못함
 }
 
 void AVLSet::Empty() {
     if (n_ == 0) {
         cout << 1 << '\n';
-    }
-    else {
+    } else {
         cout << 0 << '\n';
     }
 }
@@ -217,15 +207,14 @@ void AVLSet::Size() {
 }
 
 void AVLSet::UpperBound(int x) {
-    Node* cur = root;
-    Node* result_node = nullptr;
+    Node *cur = root;
+    Node *result_node = nullptr;
 
     while (cur) {
         if (cur->key > x) {
             result_node = cur;
             cur = cur->left;
-        }
-        else {
+        } else {
             cur = cur->right;
         }
     }
@@ -242,159 +231,12 @@ void AVLSet::UpperBound(int x) {
         if (t->parent != nullptr) {
             depth++;
             t = t->parent;
-        }
-        else {
+        } else {
             break;
         }
     }
 
     cout << result_node->key << ' ' << depth * result_node->height << '\n';
-}
-
-
-void AVLSet::Rank(int x) {
-    Node* current = root; //root부터 내려가며 탐색
-    int rank = 0;
-    int depth = 0;
-
-    while (current != nullptr) {
-        if (x < current->key) {
-            current = current->left;
-            depth++;
-        }
-        else if (x > current->key) {
-            int leftsize = (current->left != nullptr) ? current->left->size : 0; // 왼쪽 서브트리 크기
-            rank += leftsize + 1;      // 왼쪽 + 현재 노드
-            current = current->right;
-            depth++;
-        }
-        else { // x == cur->key (찾음)
-            int leftsize = (current->left != nullptr) ? current->left->size : 0;
-            rank += leftsize + 1;
-            cout << (depth * current->height) << ' ' << rank << '\n';
-            return;
-        }
-    }
-
-    cout << -1 << '\n'; // 못 찾은 경우
-}
-
-
-void AVLSet::Erase(int x) {
-    Node* node = FindNode(x);
-    if (node == nullptr) {
-        cout << -1 << '\n';
-        return;
-    }
-
-
-    int depth = 0;
-    for (Node* t = node; (t != nullptr && t->parent != nullptr); t = t->parent)
-        depth++;
-    cout << depth * node->height << '\n'; //깊이*높이 출력
-
-
-    Node* del = node; //삭제 대상 노드
-
-    if ((node->left != nullptr) && (node->right != nullptr)) { //자식 2개일때
-        Node* successor = node->right;
-        while (successor->left != nullptr)
-            successor = successor->left;
-
-        Node* balancenode = (successor->parent);
-
-        node->key = successor->key;
-        del = successor;
-        delete del;
-        --n_;
-        ReBalance(balancenode);
-    }
-    else {
-        Node* child = (del->left != nullptr) ? del->left : del->right; // del은 최대 한 자식
-        Node* parent = del->parent;
-
-        if (child != nullptr)
-            child->parent = parent;
-        if (parent == nullptr) {
-            root = child;
-        }
-        else if (parent->left == del) {
-            parent->left = child;
-        }
-        else {
-            parent->right = child;
-        }
-
-        delete del;
-        --n_;
-        ReBalance(parent);
-    }
-
-
-
-}
-
-int main(void) {
-    ios_base::sync_with_stdio(false);
-    cin.tie(nullptr);
-    cout.tie(nullptr);
-
-    int T;
-    cin >> T;
-    while (T--) {
-        AVLSet set;
-        string command;
-
-        int Q;
-        cin >> Q;
-        while (Q--) {
-            cin >> command;
-            int x;
-            if (command == "Find") {
-                if (cin >> x)
-                    set.Find(x);
-            }
-            else if (command == "Insert") {
-
-                if (cin >> x)
-                    set.Insert(x);
-            }
-            else if (command == "Empty") {
-                set.Empty();
-            }
-            else if (command == "Size") {
-                set.Size();
-            }
-            else if (command == "Prev") {
-
-                if (cin >> x)
-                    set.Prev(x);
-            }
-            else if (command == "Next") {
-
-                if (cin >> x)
-                    set.Next(x);
-            }
-            else if (command == "UpperBound") {
-
-                if (cin >> x)
-                    set.UpperBound(x);
-            }
-            else if (command == "Rank") {
-
-                if (cin >> x)
-                    set.Rank(x);
-            }
-            else if (command == "Erase") {
-
-                if (cin >> x)
-                    set.Erase(x);
-            }
-
-        }
-    }
-
-    return 0;
 }
 
 int main(void) {
