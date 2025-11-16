@@ -1,3 +1,8 @@
+// MIT License
+// Copyright (c) 2025 blackcow9622
+// Licensed under the MIT License. See LICENSE file in the project root for details.
+// 작성자 : 조현우, 작성일 : 2025.11.16
+
 #include <iostream>
 using namespace std;
 
