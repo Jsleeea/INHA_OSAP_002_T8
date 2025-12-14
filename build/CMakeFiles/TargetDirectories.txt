@@ -1,0 +1,6 @@
+/code/build/CMakeFiles/avlset_lib.dir
+/code/build/CMakeFiles/avlset_test.dir
+/code/build/CMakeFiles/avlset_app.dir
+/code/build/CMakeFiles/test.dir
+/code/build/CMakeFiles/edit_cache.dir
+/code/build/CMakeFiles/rebuild_cache.dir

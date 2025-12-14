@@ -1,0 +1,2 @@
+/usr/bin/ar qc libavlset_lib.a CMakeFiles/avlset_lib.dir/src/AVLSet.cpp.o
+/usr/bin/ranlib libavlset_lib.a

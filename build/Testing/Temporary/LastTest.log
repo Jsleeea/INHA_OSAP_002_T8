@@ -1,0 +1,29 @@
+Start testing: Dec 14 09:27 UTC
+----------------------------------------------------------
+1/1 Testing: AVLSetTest
+1/1 Test: AVLSetTest
+Command: "/code/build/avlset_test"
+Directory: /code/build
+"AVLSetTest" start time: Dec 14 09:27 UTC
+Output:
+----------------------------------------------------------
+Running main() from /googletest/googletest/src/gtest_main.cc
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from DummyTest
+[ RUN      ] DummyTest.AlwaysPass
+[       OK ] DummyTest.AlwaysPass (0 ms)
+[----------] 1 test from DummyTest (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (1 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.02 sec
+----------------------------------------------------------
+Test Passed.
+"AVLSetTest" end time: Dec 14 09:27 UTC
+"AVLSetTest" time elapsed: 00:00:00
+----------------------------------------------------------
+
+End testing: Dec 14 09:27 UTC
