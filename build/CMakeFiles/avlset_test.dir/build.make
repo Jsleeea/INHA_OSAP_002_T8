@@ -92,7 +92,6 @@ avlset_test_EXTERNAL_OBJECTS =
 
 avlset_test: CMakeFiles/avlset_test.dir/test_avlset.cpp.o
 avlset_test: CMakeFiles/avlset_test.dir/build.make
-avlset_test: libavlset_lib.a
 avlset_test: /usr/local/lib/libgtest.a
 avlset_test: /usr/local/lib/libgtest_main.a
 avlset_test: /usr/local/lib/libgtest.a

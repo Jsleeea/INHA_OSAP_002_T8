@@ -108,7 +108,7 @@ CMakeFiles/avlset_lib.dir/clean:
 # Target rules for target CMakeFiles/avlset_test.dir
 
 # All Build rule for target.
-CMakeFiles/avlset_test.dir/all: CMakeFiles/avlset_lib.dir/all
+CMakeFiles/avlset_test.dir/all:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/avlset_test.dir/build.make CMakeFiles/avlset_test.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/avlset_test.dir/build.make CMakeFiles/avlset_test.dir/build
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/code/build/CMakeFiles --progress-num=5,6 "Built target avlset_test"
@@ -116,7 +116,7 @@ CMakeFiles/avlset_test.dir/all: CMakeFiles/avlset_lib.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/avlset_test.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /code/build/CMakeFiles 4
+	$(CMAKE_COMMAND) -E cmake_progress_start /code/build/CMakeFiles 2
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/avlset_test.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /code/build/CMakeFiles 0
 .PHONY : CMakeFiles/avlset_test.dir/rule

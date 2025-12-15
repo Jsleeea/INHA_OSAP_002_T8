@@ -22,7 +22,7 @@ public:
   void Rank(int x);  // 노드의 순위를 구한다
   void Erase(int x); // 노드 x를 삭제한다
 
-private:
+//private:  //for test code
   struct Node;
   Node *root_;
   int n_; // set의 크기
@@ -435,7 +435,7 @@ void AvlSet::Erase(int x) {
     ReBalance(parent_node); // 균형 재조정
   }
 }
-
+#ifndef AVLSET_NO_MAIN
 int main(void) {
   ios_base::sync_with_stdio(false);
   cin.tie(nullptr);
@@ -483,3 +483,4 @@ int main(void) {
 
   return 0;
 }
+#endif

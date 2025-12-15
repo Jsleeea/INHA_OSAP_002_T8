@@ -1,1 +1,1 @@
-/usr/bin/c++ CMakeFiles/avlset_test.dir/test_avlset.cpp.o -o avlset_test  libavlset_lib.a /usr/local/lib/libgtest.a /usr/local/lib/libgtest_main.a /usr/local/lib/libgtest.a 
+/usr/bin/c++ CMakeFiles/avlset_test.dir/test_avlset.cpp.o -o avlset_test  /usr/local/lib/libgtest.a /usr/local/lib/libgtest_main.a /usr/local/lib/libgtest.a 

@@ -16,9 +16,9 @@ target_compile_definitions(avlset_lib PRIVATE AVLSET_NO_MAIN)
 add_executable(avlset_test
         test_avlset.cpp
 )
+
 target_compile_definitions(avlset_test PRIVATE AVLSET_NO_MAIN)
 target_link_libraries(avlset_test
-        avlset_lib
         GTest::gtest
         GTest::gtest_main
 )
@@ -26,7 +26,7 @@ target_link_libraries(avlset_test
 enable_testing()
 add_test(NAME AVLSetTest COMMAND avlset_test)
 
-# (선택) 원래 프로그램 실행용(main 포함)
+#원래 프로그램 실행용(main 포함)
 add_executable(avlset_app
         src/AVLSet.cpp
 )
